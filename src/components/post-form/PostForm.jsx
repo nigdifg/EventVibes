@@ -4,7 +4,7 @@ import { Button, Input, RTE, Select } from "..";
 import appwriteService from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import Container from "../container/Container";
 
 
 export default function PostForm({ post }) {
@@ -79,78 +79,79 @@ export default function PostForm({ post }) {
     }, [watch, slugTransform, setValue]);
 
     return (
-        <div>
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-            <div className="w-2/3 px-2">
-                <Input
-                    label="Event Name :"
-                    placeholder="Title"
-                    className="mb-4"
-                    {...register("title", { required: true })}
-                />
-                <Input
-                    label="Slug :"
-                    placeholder="Slug"
-                    className="mb-4"
-                    {...register("slug", { required: true })}
-                    onInput={(e) => {
-                        setValue("slug", SetDateandTime(e.currentTarget.value), { shouldValidate: true });
-                    }}
-                />
-               
-                
-                <RTE label="Description of Event :" name="content" control={control} defaultValue={getValues("content")} />
-            </div>
-            <div className="w-1/3 px-2">
-                <Input 
-                label="Date and Time of Event :"
-                placeholder="Date and Time of Event"
-                className="mb-4"
-                type="datetime-local" {...register("eventDateTime")} 
-                />
-
-                <Input
-                label="Location of Event :"
-                placeholder="Location of Event"
-                className="mb-4"
-                {...register("location", { required: true })}
-                />
-
-                <Input  
-                label="Event's Ticket Price :"
-                placeholder="Event's Ticket Price"
-                className="mb-4"
-                {...register("ticketPrice", { required: true })}
-                />
-
-                <Input
-                    label="Event Image :"
-                    type="file"
-                    className="mb-4"
-                    accept="image/png, image/jpg, image/jpeg, image/gif"
-                    {...register("image", { required: !post })}
-                />
-                {post && (
-                    <div className="w-full mb-4">
-                        <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
-                            alt={post.title}
-                            className="rounded-lg"
-                        />
-                    </div>
-                )}
-                <Select
-                    options={["active", "inactive"]}
-                    label="Status"
-                    className="mb-4"
-                    {...register("status", { required: true })}
-                />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
-                    {post ? "Update" : "Submit"}
-                </Button>
-            </div>
-
-        </form>
+        <div className="bg-gray-100 py-8">
+            <Container>
+                <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+                    <h1 className="text-3xl font-bold text-center text-blue-700 mb-6">{post ? "Update Event" : "Create Event"}</h1>
+                    <form onSubmit={handleSubmit(submit)} className="space-y-4">
+                        <div className="flex flex-wrap -mx-2">
+                            <div className="w-full md:w-2/3 px-2">
+                                <Input
+                                    label="Event Name :"
+                                    placeholder="Title"
+                                    className="w-full"
+                                    {...register("title", { required: true })}
+                                />
+                                <Input
+                                    label="Slug :"
+                                    placeholder="Slug"
+                                    className="w-full"
+                                    {...register("slug", { required: true })}
+                                    onInput={(e) => {
+                                        setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
+                                    }}
+                                />
+                                <RTE label="Description of Event :" name="content" control={control} defaultValue={getValues("content")} />
+                            </div>
+                            <div className="w-full md:w-1/3 px-2">
+                                <Input 
+                                    label="Date and Time of Event :"
+                                    placeholder="Date and Time of Event"
+                                    className="w-full"
+                                    type="datetime-local" {...register("eventDateTime")} 
+                                />
+                                <Input
+                                    label="Location of Event :"
+                                    placeholder="Location of Event"
+                                    className="w-full"
+                                    {...register("location", { required: true })}
+                                />
+                                <Input  
+                                    label="Event's Ticket Price :"
+                                    placeholder="Event's Ticket Price"
+                                    className="w-full"
+                                    {...register("ticketPrice", { required: true })}
+                                />
+                                <Input
+                                    label="Event Image :"
+                                    type="file"
+                                    className="w-full"
+                                    accept="image/png, image/jpg, image/jpeg, image/gif"
+                                    {...register("image", { required: !post })}
+                                />
+                                {post && (
+                                    <div className="w-full mb-4">
+                                        <img
+                                            src={appwriteService.getFilePreview(post.featuredImage)}
+                                            alt={post.title}
+                                            className="rounded-lg w-full h-64 object-cover"
+                                        />
+                                    </div>
+                                )}
+                                <Select
+                                    options={["active", "inactive"]}
+                                    label="Status"
+                                    className="w-full"
+                                    {...register("status", { required: true })}
+                                />
+                                <Button type="submit" bgColor={post ? "bg-green-500" : "bg-blue-500"} className="w-full mt-4">
+                                    {post ? "Update" : "Submit"}
+                                </Button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </Container>
         </div>
     );
 }

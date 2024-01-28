@@ -33,39 +33,49 @@ export default function Post() {
     };
 
     return post ? (
-        <div className="py-8">
+        <div className="bg-gray-100 py-8">
             <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-                    <img
-                        src={appwriteService.getFilePreview(post.featuredImage)}
-                        alt={post.title}
-                        className="rounded-xl"
-                    />
+                <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+                    <div className="flex justify-center mb-4 relative">
+                        <img
+                            src={appwriteService.getFilePreview(post.featuredImage)}
+                            alt={post.title}
+                            className="rounded-lg w-full h-64 object-cover"
+                        />
 
-                    {isAuthor && (
-                        <div className="absolute right-6 top-6">
-                            <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3">
-                                    Edit
+                        {isAuthor && (
+                            <div className="absolute right-6 top-6">
+                                <Link to={`/edit-post/${post.$id}`}>
+                                    <Button bgColor="bg-green-500" className="mr-3">
+                                        Edit
+                                    </Button>
+                                </Link>
+                                <Button bgColor="bg-red-500" onClick={deletePost}>
+                                    Delete
                                 </Button>
-                            </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost}>
-                                Delete
-                            </Button>
-                        </div>
-                    )}
-                </div>
-                <div className="w-full mb-6">
-                    <h1 className="text-2xl font-bold text-center text-blue-700">
-                        {post.title}</h1>
-                </div>
-                <div className="browser-css mb-4">
-                    {parse(post.content)}
-                </div>
-                <div className="browser-css bg-gray-100 p-4 rounded-md shadow-md">
-                    <p className="text-xl font-bold mb-2">Event's Ticket Price : <span className="font-normal text-green-600">{post.ticketPrice}</span></p>
-                    <p className="text-xl font-bold mb-2">Location of Event : <span className="font-normal text-green-600">{post.location}</span></p>
-                    <p className="text-xl font-bold">Date and Time of Event : <span className="font-normal text-green-600">{post.eventDateTime}</span></p>
+                            </div>
+                        )}
+                    </div>
+                    <h1 className="text-3xl font-bold text-center text-blue-700 mb-6">
+                        {post.title}
+                    </h1>
+                    <div className="mb-6 text-lg text-gray-700">
+                        {parse(post.content)}
+                    </div>
+                    <div className="bg-blue-50 p-4 rounded-md shadow-inner">
+                        <p className="text-xl font-bold mb-2">Event's Ticket Price : <span className="font-normal text-blue-600">{post.ticketPrice}</span></p>
+                        <p className="text-xl font-bold mb-2">Location of Event : <span className="font-normal text-blue-600">{post.location}</span></p>
+                        <p className="text-xl font-bold mb-2">Date of Event : 
+                            <span className="font-normal text-blue-600">
+                                {new Date(post.eventDateTime).toLocaleDateString()}
+                            </span>                
+                        </p>       
+                        <p className="text-xl font-bold">Time of Event : 
+                        <span className="font-normal text-blue-600">
+                                {new Date(post.eventDateTime).toLocaleTimeString()}                        
+                        </span>
+                        </p>         
+                    </div>
                 </div>
             </Container>
         </div>
