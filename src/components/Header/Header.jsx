@@ -8,7 +8,7 @@ function Header() {
   const authStatus = useSelector((state) => state.auth.status)
   const navigate = useNavigate()
   const user = useSelector((state) => state.auth.userData);
-  console.log(user.name)
+  // console.log(user.name)
   const navItems = [
     {
       name: 'Home',
@@ -49,7 +49,7 @@ function Header() {
               <Logo width='70px'/>
               </Link>
           </div>
-          <span className='flex'>Hi {user.name}</span>
+          <span className='flex'>Welcome</span>
 
 
           <ul className='flex ml-auto'>
