@@ -50,7 +50,7 @@ function Header() {
               <Logo width='70px'/>
               </Link>
           </div>
-          <span className='flex'>Hi {user.name}</span>
+          <span className='flex'>Hi {user.title}</span>
 
 
           <ul className='flex ml-auto'>
