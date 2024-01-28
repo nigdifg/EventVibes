@@ -56,12 +56,17 @@ export default function Post() {
                     )}
                 </div>
                 <div className="w-full mb-6">
-                    <h1 className="text-2xl font-bold">
+                    <h1 className="text-2xl font-bold text-center text-blue-700">
                         {post.title}</h1>
                 </div>
-                <div className="browser-css">
+                <div className="browser-css mb-4">
                     {parse(post.content)}
-                    </div>
+                </div>
+                <div className="browser-css bg-gray-100 p-4 rounded-md shadow-md">
+                    <p className="text-xl font-bold mb-2">Event's Ticket Price : <span className="font-normal text-green-600">{post.ticketPrice}</span></p>
+                    <p className="text-xl font-bold mb-2">Location of Event : <span className="font-normal text-green-600">{post.location}</span></p>
+                    <p className="text-xl font-bold">Date and Time of Event : <span className="font-normal text-green-600">{post.eventDateTime}</span></p>
+                </div>
             </Container>
         </div>
     ) : null;
