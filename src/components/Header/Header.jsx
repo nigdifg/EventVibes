@@ -8,7 +8,6 @@ function Header() {
   const authStatus = useSelector((state) => state.auth.status)
   const navigate = useNavigate()
   const user = useSelector((state) => state.auth.userData);
-  // console.log(user.name)
   const navItems = [
     {
       name: 'Home',
@@ -39,7 +38,7 @@ function Header() {
 
 
   return (
-    <header className='py-3 shadow bg-gray-500'>
+    <header className='py-4 shadow bg-gray-500'>
       
       <Container>
 
