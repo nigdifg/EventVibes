@@ -1,11 +1,15 @@
 import conf from '../conf/conf.js';
 import { Client, ID, Databases, Storage, Query } from "appwrite";
+import { toast,Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export class Service{
     client = new Client();
     databases;
     bucket;
     
+
     constructor(){
         this.client
         .setEndpoint(conf.appwriteUrl)
@@ -14,9 +18,10 @@ export class Service{
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({title, slug, content, featuredImage, status, userId, eventDateTime, location, ticketPrice}){
+    
+    async createPost({title, slug, content, featuredImage, status, userId, eventDateTime, location, ticketPrice,name,contact}){
         try {
-            return await this.databases.createDocument(
+            const result = await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 slug,
@@ -29,16 +34,20 @@ export class Service{
                     eventDateTime, // new field
                     location,
                     ticketPrice,
+                    name,
+                    contact,
                 }
-            )
+            );
+            toast.success("Post created successfully");
+            return result;
         } catch (error) {
-            console.log("Appwrite serive :: createPost :: error", error);
+            toast.error(`An error occurred: ${error.message}`);
         }
     }
 
-    async updatePost(slug, {title, content, featuredImage, status, eventDateTime, location,ticketPrice}){
+    async updatePost(slug, {title, content, featuredImage, status, eventDateTime, location,ticketPrice,name,contact}){
         try {
-            return await this.databases.updateDocument(
+            const res =  await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 slug,
@@ -50,25 +59,28 @@ export class Service{
                     eventDateTime,
                     location,
                     ticketPrice,
+                    name,
+                    contact,
                 }
-            )
+            );
+            toast.success("Post updated successfully");
+            return res;
         } catch (error) {
-            console.log("Appwrite serive :: updatePost :: error", error);
+            toast.error(`${error.message}`);
         }
     }
-
     async deletePost(slug){
         try {
             await this.databases.deleteDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 slug
-            
-            )
-            return true
+            );
+            toast.success("Post deleted successfully");
+            return true;
         } catch (error) {
-            console.log("Appwrite serive :: deletePost :: error", error);
-            return false
+            toast.error(`An error occurred: ${error.message}`);
+            return false;
         }
     }
 
@@ -85,6 +97,7 @@ export class Service{
             return false
         }
     }
+
 
     async getPosts(queries = [Query.equal("status", "active")]){
         try {
@@ -105,14 +118,17 @@ export class Service{
 
     async uploadFile(file){
         try {
-            return await this.bucket.createFile(
+            const result = await this.bucket.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
                 file
-            )
+            );
+            toast.success("File uploaded successfully");
+            return result;
+
         } catch (error) {
-            console.log("Appwrite serive :: uploadFile :: error", error);
-            return false
+            toast.error(`An error occurred: ${error.message}`);
+            return false;
         }
     }
 
