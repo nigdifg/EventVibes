@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 
 export default function Protected({children, authentication = true}) {
 
@@ -9,23 +13,24 @@ export default function Protected({children, authentication = true}) {
     const authStatus = useSelector(state => state.auth.status)
 
     useEffect(() => {
-        //TODO: make it more easy to understand
-
-        // if (authStatus ===true){
-        //     navigate("/")
-        // } else if (authStatus === false) {
-        //     navigate("/login")
-        // }
-        
-        //let authValue = authStatus === true ? true : false
-
         if(authentication && authStatus !== authentication){
-            navigate("/login")
+            navigate("/login");
+            toast.error("You are not authenticated. Redirecting to login page...");
         } else if(!authentication && authStatus !== authentication){
-            navigate("/")
+            navigate("/");
+            toast.success("You are authenticated. Redirecting to home page...");
         }
-        setLoader(false)
-    }, [authStatus, navigate, authentication])
+        setLoader(false);
+    }, [authStatus, navigate, authentication]);
+    // useEffect(() => {
 
-  return loader ? <h1>Loading...</h1> : <>{children}</>
+    //     if(authentication && authStatus !== authentication){
+    //         navigate("/login")
+    //     } else if(!authentication && authStatus !== authentication){
+    //         navigate("/")
+    //     }
+    //     setLoader(false)
+    // }, [authStatus, navigate, authentication])
+return loader ? <h1 style={{ color: 'blue', fontSize: '2em' }}>Loading...</h1> : <>{children}</>
+//   return loader ? <h1>Loading...</h1> : <>{children}</>
 }
