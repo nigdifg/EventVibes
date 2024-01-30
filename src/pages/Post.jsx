@@ -67,10 +67,10 @@ export default function Post() {
         <>
         <ToastContainer />
         
-        <div className="bg-gray-100 py-8">
+        <div className="bg-gray-500 py-8">
             <Container>
                 <div className="flex">
-                    <div className="w-1/2 bg-white shadow-md rounded-lg p-6 mb-8">
+                    <div className="w-1/2 bg-gray-500 shadow-md rounded-lg p-6 mb-8">
                         <div className="flex justify-center mb-4 relative">
                             <img
                                 src={appwriteService.getFilePreview(post.featuredImage)}
@@ -92,18 +92,18 @@ export default function Post() {
                                 </div>
                             )}
                         </div>
-                        <h1 className="text-3xl font-bold text-center text-blue-700 mb-6">
+                        <h1 className="text-3xl font-bold text-center text-white mb-6">
                             {post.title}
                         </h1>
                         
-                        <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-                            <h2 className="text-2xl font-bold mb-4 text-center cursor-pointer" onClick={() => setIsOrganizerDetailsOpen(!isOrganizerDetailsOpen)}>
-                                Organizer Details {isOrganizerDetailsOpen ? <FiMinusSquare /> : <FiPlusSquare />}
+                        <div className="bg-gray-500 shadow-md rounded-lg p-8 mb-8">
+                            <h2 className="text-2xl text-green-500 font-bold mb-4 text-center cursor-pointer" onClick={() => setIsOrganizerDetailsOpen(!isOrganizerDetailsOpen)}>
+                                Organizer Details <span text-green-500> {isOrganizerDetailsOpen ? <FiMinusSquare /> : <FiPlusSquare />}</span>
                             </h2>
                             {isOrganizerDetailsOpen && (
                                 <>
-                                    <p className="text-xl font-bold mb-2">Name : <span className="font-normal text-blue-600">{post.name}</span></p>
-                                    <p className="text-xl font-bold mb-2">Contact :<span className="font-normal text-blue-600">{post.contact}</span></p>
+                                    <p className="text-xl font-bold mb-2">Name : <span className="font-normal text-white">{post.name}</span></p>
+                                    <p className="text-xl font-bold mb-2">Contact :<span className="font-normal text-white">{post.contact}</span></p>
                                 </>
                             )}
                         </div>
@@ -112,38 +112,38 @@ export default function Post() {
                     <div className="w-1/2">
                        
 
-                        <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-                            <h2 className="text-2xl font-bold mb-4 text-center cursor-pointer" onClick={() => setIsEventDetailsOpen(!isEventDetailsOpen)}>
+                        <div className="bg-gray-500 shadow-md rounded-lg p-6 mb-8">
+                            <h2 className="text-2xl text-green-500 font-bold mb-4 text-center cursor-pointer" onClick={() => setIsEventDetailsOpen(!isEventDetailsOpen)}>
                                 Event Details {isEventDetailsOpen ? <FiMinusSquare /> : <FiPlusSquare />}
                             </h2>
                             {isEventDetailsOpen && (
                                 <>
                                   <p className="text-xl font-bold mb-2">
-                                  <div className="mb-6 text-lg text-gray-700">
+                                  <div className="mb-6 text-lg text-white">
                             {parse(post.content)}
                         </div>    
-                                 <span className="font-normal text-blue-600">{post.location}</span></p>    
+                                 <span className="font-normal text-white">{post.location}</span></p>    
                                 </>
                             )}
                         </div>
-                        <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-                        <h2 className="text-2xl font-bold mb-4 text-center cursor-pointer" onClick={() => setIsWhenAndWhereOpen(!isWhenAndWhereOpen)}>
+                        <div className="bg-gray-500 shadow-md rounded-lg p-6 mb-8">
+                        <h2 className="text-2xl text-green-500 font-bold mb-4 text-center cursor-pointer" onClick={() => setIsWhenAndWhereOpen(!isWhenAndWhereOpen)}>
                             When and Where? {isWhenAndWhereOpen ? <FiMinusSquare /> : <FiPlusSquare />}
                         </h2>
                         {isWhenAndWhereOpen && (
                             <>
-                                <p className="text-xl font-bold mb-2">Date : 
-                                    <span className="font-normal text-blue-600">
+                                <p className="text-xl font-bold mb-2">Date : &nbsp;
+                                    <span className="font-normal text-white">
                                         {new Date(post.eventDateTime).toLocaleDateString()}
                                     </span>                
                                 </p>       
-                                <p className="text-xl font-bold">Time : 
-                                <span className="font-normal text-blue-600">
+                                <p className="text-xl font-bold">Time : &nbsp;
+                                <span className="font-normal text-white">
                                         {new Date(post.eventDateTime).toLocaleTimeString()}                        
                                 </span>
                                 </p>         
-                                <p className="text-xl font-bold">Location :
-                                <span className="text-blue-600 font-noraml">
+                                <p className="text-xl font-bold">Location :&nbsp;
+                                <span className="text-white font-noraml">
                                     {post.location}
                                 </span>
                                 
@@ -151,13 +151,13 @@ export default function Post() {
                             </>
                         )}
                     </div>
-                    <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-                    <h2 className="text-2xl font-bold mb-4 text-center cursor-pointer" onClick={() => setIsTicketPriceOpen(!isTicketPriceOpen)}>
+                    <div className="bg-gray-500 shadow-md rounded-lg p-6 mb-8">
+                    <h2 className="text-2xl text-green-500 font-bold mb-4 text-center cursor-pointer" onClick={() => setIsTicketPriceOpen(!isTicketPriceOpen)}>
                         Ticket Price {isTicketPriceOpen ? <FiMinusSquare /> : <FiPlusSquare />}
                     </h2>
                     {isTicketPriceOpen && (
                         <>
-                            <p className="text-xl font-bold mb-2">Ticket Price : <span className="font-normal text-blue-600">{post.ticketPrice}</span></p>
+                            <p className="text-xl font-bold mb-2">Ticket Price : <span className="font-normal text-white">{post.ticketPrice}</span></p>
                         </>
                     )}
                     </div>

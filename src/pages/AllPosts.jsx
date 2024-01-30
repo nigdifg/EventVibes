@@ -13,12 +13,12 @@ function AllPosts() {
     }, [])
 
     return (
-        <div className='w-full py-8 bg-gray-100'>
+        <div className='w-full py-8 bg-gray-500'>
             <Container>
-                <h1 className="text-3xl font-bold text-center text-blue-700 mb-6">All Posts</h1>
-                <div className='grid grid-cols-4 gap-4'>
+                <h1 className="text-3xl font-bold text-center text-green-200 mb-6">All Events</h1>
+                <div className='grid grid-cols-3 gap-5'>
                     {posts.map((post) => (
-                        <div key={post.$id} className='p-2 w-full bg-white shadow-md rounded-lg transform transition duration-500 ease-in-out hover:scale-105'>
+                        <div key={post.$id} className='p-1 w-full shadow-md rounded-lg transform transition duration-500 ease-in-out hover:scale-105'>
                             <PostCard {...post} />
                         </div>
                     ))}

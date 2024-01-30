@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {BsFillArrowRightCircleFill,BsFillArrowLeftCircleFill} from "react-icons/bs"
 // import img1 from '../assets/images/1.jpg';
 import img2 from '../assets/images/2.jpeg';
@@ -25,6 +25,14 @@ const CarouselImage = () => {
     else setCurrent(current+1);
   }
 
+  useEffect(()=>{
+    let slider = setInterval(()=>{
+      if(current==images.length -1) setCurrent(0);
+      else setCurrent(current+1);
+    },2000);
+    return ()=>clearInterval(slider);
+  }
+  ,[current]);
 
   return (
     <div className='overflow-hidden pt-12 relative'>

@@ -38,16 +38,16 @@ function PostCard({$id, title, featuredImage, ticketPrice, eventDateTime}) {
   }
 
   return (
-    <div className="block bg-white rounded-lg shadow-md overflow-hidden transition transform hover:scale-105">
+    <div className="block bg-gray-50 rounded-lg shadow-md overflow-hidden transition transform hover:scale-105">
       <Link to={`/post/${$id}`}>
         <img src={appwriteService.getFilePreview(featuredImage)} alt={title} className='w-full h-64 object-cover' />
         <div className='p-6'>
           <h2 className='text-2xl font-bold mb-2'>{title}</h2>
-          <p className='text-lg text-gray-700 mb-2'>Ticket Price: Rs {ticketPrice}</p>
-          <p className='text-lg text-gray-700'>Date: {new Date(eventDateTime).toDateString()}</p>
+          <p className='text-lg text-green-700 mb-2'>Ticket Price: Rs <span className='text-gray-800'> {ticketPrice}</span></p>
+          <p className='text-lg text-green-700'>Date:<span className='text-gray-800'>  {new Date(eventDateTime).toDateString()} </span> </p>
         </div>
       </Link>
-      <button onClick={copyToClipboard} className="p-2 bg-blue-500 text-white rounded">Copy URL</button>
+      <button onClick={copyToClipboard} className="p-2 bg-green-500 text-white rounded">Copy URL</button>
       <div className="flex items-center justify-start mt-2">
         <button onClick={handleLike} className="p-2 bg-red-500 text-white rounded ml-2 flex items-center"><FaThumbsUp /><span className="ml-1">{likes}</span></button>
         <button onClick={handleDislike} className="p-2 bg-gray-500 text-white rounded ml-2 flex items-center"><FaThumbsDown /><span className="ml-1">{dislikes}</span></button>

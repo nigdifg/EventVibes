@@ -107,52 +107,57 @@ const image = watch("image");
     <>
     <ToastContainer />
     
-    <div className="bg-gray-100 py-8">
+    <div className="bg-gray-500 py-8">
       <Container>
+      <div className="mb-4">
+              <p className="text-lg text-gray-100">
+                <span className="font-bold">Note:</span> Please fill out all the fields below to create a new post.
+              </p>
+            </div>
         <div className="grid grid-cols-3 gap-4">
           {/* Navbar */}
-          <div className="col-span-1 bg-gray-300 p-4 rounded-lg">
+          <div className="col-span-1 bg-gray-500 p-4 rounded-lg">
             <button
-              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "eventName" ? "bg-blue-500 text-white" : ""}`}
+              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "eventName" ? "bg-green-500 text-white" : ""}`}
               onClick={() => toggleSection("eventName")}
             >
               Event Name {title ? null : <span className="text-red-500">*</span>}
               
             </button>
             <button
-              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "eventDetails" ? "bg-blue-500 text-white" : ""}`}
+              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "eventDetails" ? "bg-green-500 text-white" : ""}`}
               onClick={() => toggleSection("eventDetails")}
             >
               Event Details {detail ? null : <span className="text-red-500">*</span>}
 
             </button>
             <button
-              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "eventOrganizer" ? "bg-blue-500 text-white" : ""}`}
+              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "eventOrganizer" ? "bg-green-500 text-white" : ""}`}
               onClick={() => toggleSection("eventOrganizer")}
             >
               Event Organizer {eventorganiser ? null : <span className="text-red-500">*</span>}
             </button>
             <button
-              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "ticketPrice" ? "bg-blue-500 text-white" : ""}`}
+              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "ticketPrice" ? "bg-green-500 text-white" : ""}`}
               onClick={() => toggleSection("ticketPrice")}
             >
 
               Event Ticket Price {ticketprice ? null : <span className="text-red-500">*</span>}
             </button>
             <button
-              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "eventDateTime" ? "bg-blue-500 text-white" : ""}`}
+              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "eventDateTime" ? "bg-green-500 text-white" : ""}`}
               onClick={() => toggleSection("eventDateTime")}
             >
               When and Where? {eventdatetime ? null : <span className="text-red-500">*</span>}
             </button>
             <button
-              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "status" ? "bg-blue-500 text-white" : ""}`}
+              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "status" ? "bg-green-500 text-white" : ""}`}
               onClick={() => toggleSection("status")}
             >
               Status {status ? null : <span className="text-red-500">*</span>}
             </button>
             <button
-              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "image" ? "bg-blue-500 text-white" : ""}`}
+              className={`p-4 w-full text-center rounded-lg mb-4 ${expandedSection === "image" ? "bg-green-500 text-white" : ""}`}
               onClick={() => toggleSection("image")}
             >
               Event Image {image ? null : <span className="text-red-500">*</span>}
@@ -161,12 +166,8 @@ const image = watch("image");
           </div>
 
           {/* Main Content */}
-          <div className="col-span-2 p-4 bg-white rounded-lg">
-            <div className="mb-4">
-              <p className="text-lg text-gray-700">
-                <span className="font-bold">Note:</span> Please fill out all the fields below to create a new post.
-              </p>
-            </div>
+          <div className="col-span-2 p-4 bg-red rounded-lg">
+           
           <form onSubmit={handleSubmit(submit)}>
 
             
@@ -282,7 +283,7 @@ const image = watch("image");
                 <Button 
                   onClick={handleSubmit(submit)} 
                   type="submit" 
-                  bgColor={post ? "bg-green-500" : "bg-blue-500"} 
+                  bgColor={post ? "bg-green-500" : "bg-green-500"} 
                   className="w-full"
                 >
                   {post ? "Update" : "Submit"}
