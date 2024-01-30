@@ -45,7 +45,10 @@ Welcome to EventVibes – your go-to platform for organizing events effortlessly
 
 ## Technologies Used
 
-- React
+- React.js
+- Javascript
+- Appwrite
+- Tailwind CSS
 - Styled Components
 - Swiper (for image carousel)
 - Other dependencies listed in `package.json`
