@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 
 
 export default function Protected({children, authentication = true}) {
-
+    <ToastContainer />
     const navigate = useNavigate()
     const [loader, setLoader] = useState(true)
     const authStatus = useSelector(state => state.auth.status)
@@ -31,6 +31,6 @@ export default function Protected({children, authentication = true}) {
     //     }
     //     setLoader(false)
     // }, [authStatus, navigate, authentication])
-return loader ? <h1 style={{ color: 'blue', fontSize: '2em' }}>Loading...</h1> : <>{children}</>
+return loader ? <h1 style={{ color: 'green', fontSize: '2em' }}>Loading...</h1> : <>{children}</>
 //   return loader ? <h1>Loading...</h1> : <>{children}</>
 }

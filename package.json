@@ -21,7 +21,9 @@
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.21.0",
     "react-toastify": "^10.0.4",
-    "react-typed": "^2.0.12"
+    "react-typed": "^2.0.12",
+    "styled-components": "^6.1.8",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

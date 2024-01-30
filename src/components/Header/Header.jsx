@@ -15,6 +15,11 @@ function Header() {
       active: true
     }, 
     {
+      name: 'About',
+      slug: "/about",
+      active: true
+    }, 
+    {
       name: "Login",
       slug: "/login",
       active: !authStatus,
@@ -39,7 +44,6 @@ function Header() {
 
   return (
     <header className='py-4 shadow bg-gray-500'>
-      
       <Container>
 
         <nav className='flex w-full'>
@@ -48,7 +52,7 @@ function Header() {
               <Logo width='70px'/>
               </Link>
           </div>
-          <span className='flex'>Welcome</span>
+          <span className='flex'>Event Vibes</span>
 
 
           <ul className='flex ml-auto'>

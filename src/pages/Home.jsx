@@ -15,20 +15,18 @@ function Home() {
   
     if (posts.length === 0) {
         return (
-            <div className="w-full py-8 mt-4 text-center">
                 <Container>
                     <Intro/>
                    
                 </Container>
-            </div>
         )
     }
     return (
-        <div className='w-full min-w-full min-h-full py-8'>
+        // <div className='w-full min-w-full min-h-full py-8'>
             <Container>
                 <Intro/>
             </Container>
-        </div>
+        // </div>
     )
 }
 
