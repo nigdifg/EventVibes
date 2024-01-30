@@ -17,6 +17,7 @@ import Post from "./pages/Post";
 
 import AllPosts from "./pages/AllPosts";
 import About from "./pages/About";
+import Contact from './pages/Contact.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
         {
             path: "/about",
             element: <About/>,
+        },
+        {
+            path: "/contact",
+            element: <Contact/>,
         },
         {
             path: "/login",
